@@ -1,4 +1,4 @@
-perfect_markup
+perfectmarkup.js
 ==============
 
-unknown script for pixel perfect html/css coding (native javascript) 
+Unknown script for pixel perfect html/css coding (native javascript)
