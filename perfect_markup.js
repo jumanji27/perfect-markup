@@ -7,7 +7,7 @@ var pm = {
 
     go: function( img ) {
 
-      var overlay = pm.initialize.go.prototype.overlay = pm.help.ce("div");
+      var overlay = pm.help.ce("div");
       var overlayImg = pm.initialize.go.prototype.overlayImg = pm.help.ce("img");
 
       pm.help.sa( overlay, "id", "overlay" );
@@ -89,11 +89,9 @@ var pm = {
   setLayoutImage: function( src ) {
     var img = new Image();
     var overlayW, overlayH;
-    var overlay = pm.initialize.go.prototype.overlay;
     var overlayImg = pm.initialize.go.prototype.overlayImg;
 
     pm.help.sa( overlayImg, "id", "overlay_img" );
-    overlay.appendChild( overlayImg );
 
     pm.addEvent( img, "load", function () {
       overlayImg.src = src;
