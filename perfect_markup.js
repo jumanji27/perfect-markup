@@ -5,7 +5,7 @@ var pm = {
 
   initialize: {
 
-    go: function() {
+    go: function( img ) {
 
       var overlay = pm.initialize.go.prototype.overlay = pm.help.ce("div");
       var overlayImg = pm.initialize.go.prototype.overlayImg = pm.help.ce("img");
@@ -62,7 +62,7 @@ var pm = {
           }
       });
 
-      pm.setLayoutImage( "_dev/layout.png" );
+      pm.setLayoutImage( img );
     }
 
   },
@@ -132,4 +132,5 @@ var pm = {
 
 };
 
-pm.initialize.go();
+pm.initialize.go( "layout.png" );
+
