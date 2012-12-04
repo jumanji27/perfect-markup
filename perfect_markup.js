@@ -1,6 +1,9 @@
 // perfectmarkup.js
 // Unknown script for pixel perfect html/css coding
 // https://github.com/nazz-nazz/perfect_markup
+
+window.onload = function() {
+
 var pm = {
 
   initialize: {
@@ -51,6 +54,7 @@ var pm = {
             if ( event.preventDefault ) {
               event.preventDefault();
             }
+
             event.returnValue = false;
 
             return true;
@@ -59,6 +63,7 @@ var pm = {
           // Ctrl + Enter - resize window to size of layout
           if ( event.ctrlKey && (key == 13) ) {
             $("#overlay").css( "opacity", "1" );
+            ( pm.doDisplay() == "none" ) ? pm.doDisplay("block") : pm.doDisplay("none");
           }
       });
 
@@ -130,5 +135,6 @@ var pm = {
 
 };
 
-pm.initialize.go( "layout.png" );
+pm.initialize.go( "_dev/layout.png" );
 
+};
