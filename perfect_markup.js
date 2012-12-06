@@ -119,11 +119,11 @@ var pm = {
   // window.name storage routine
   help: {
 
-    ge: function(id) {
+    ge: function( id ) {
       return document.getElementById( id );
     },
 
-    ce: function(tag) {
+    ce: function( tag ) {
       return document.createElement( tag );
     },
 
