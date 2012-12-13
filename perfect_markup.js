@@ -98,7 +98,7 @@ var pm = {
   setLayoutImage: function( src ) {
     var img = new Image();
     var overlayW, overlayH;
-    overlayImg = pm.initialize.config.overlayImg;
+    var overlayImg = pm.initialize.config.overlayImg;
 
     pm.help.sa( overlayImg, "id", "overlay_img" );
 
