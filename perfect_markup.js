@@ -8,10 +8,14 @@ var pm = {
 
   initialize: {
 
+    config: {
+      overlayImg: ""
+    },
+
     go: function( img ) {
 
       var overlay = pm.help.ce("div");
-      var overlayImg = pm.initialize.go.prototype.overlayImg = pm.help.ce("img");
+      var overlayImg = pm.initialize.config.overlayImg = pm.help.ce("img");
 
       pm.help.sa( overlay, "id", "overlay" );
       document.body.appendChild( overlay );
@@ -94,7 +98,7 @@ var pm = {
   setLayoutImage: function( src ) {
     var img = new Image();
     var overlayW, overlayH;
-    var overlayImg = pm.initialize.go.prototype.overlayImg;
+    overlayImg = pm.initialize.config.overlayImg;
 
     pm.help.sa( overlayImg, "id", "overlay_img" );
 
