@@ -6,16 +6,16 @@ window.onload = function() {
 
 var pm = {
 
-  initialize: {
+  settings: {
+    overlayImg: ""
+  },
 
-    config: {
-      overlayImg: ""
-    },
+  initialize: {
 
     go: function( img ) {
 
       var overlay = pm.help.ce("div");
-      var overlayImg = pm.initialize.config.overlayImg = pm.help.ce("img");
+      var overlayImg = pm.settings.overlayImg = pm.help.ce("img");
 
       pm.help.sa( overlay, "id", "overlay" );
       document.body.appendChild( overlay );
@@ -82,7 +82,7 @@ var pm = {
       obj.addEventListener( event, handler, false );
     }
     else if
-      ( obj.attachEvent( 'on' + event, handler ) );
+      ( obj.attachEvent( "on" + event, handler ) );
   },
 
   addGlobalStyle: function( css ) {
@@ -92,13 +92,13 @@ var pm = {
     var cssText = document.createTextNode( css );
     globalStyle.appendChild( cssText );
 
-    document.getElementsByTagName('head')[0].appendChild( globalStyle );
+    document.getElementsByTagName("head")[0].appendChild( globalStyle );
   },
 
   setLayoutImage: function( src ) {
     var img = new Image();
     var overlayW, overlayH;
-    var overlayImg = pm.initialize.config.overlayImg;
+    var overlayImg = pm.settings.overlayImg;
 
     pm.help.sa( overlayImg, "id", "overlay_img" );
 
@@ -139,6 +139,6 @@ var pm = {
 
 };
 
-pm.initialize.go( "_dev/layout.png" );
+pm.initialize.go("_dev/layout.png");
 
 };
