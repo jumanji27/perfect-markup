@@ -5,7 +5,7 @@ Unknown script for pixel perfect html/css coding (native javascript)
 
 For call:
 
-    pm.initialize.go( "layout.png" );
+    pm.initialize.go("layout.png");
 
 Call already included in a script
 
