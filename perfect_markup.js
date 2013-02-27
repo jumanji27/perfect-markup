@@ -6,75 +6,68 @@ window.onload = function() {
 
 var pm = {
 
-  settings: {
-    overlayImg: ""
-  },
+  initialize: function(img) {
 
-  initialize: {
+    var overlay = pm.help.ce("div");
+    var overlayImg = pm.help.ce("img");
 
-    go: function(img) {
+    pm.help.sa(overlay, "id", "overlay");
+    document.body.appendChild(overlay);
 
-      var overlay = pm.help.ce("div");
-      var overlayImg = pm.settings.overlayImg = pm.help.ce("img");
+    pm.help.sa(overlayImg, "id", "overlay_img");
 
-      pm.help.sa( overlay, "id", "overlay" );
-      document.body.appendChild(overlay);
+    overlay.appendChild(overlayImg);
 
-      pm.help.sa( overlayImg, "id", "overlay_img" );
+    if (pm.doDisplay() == "") {
+      pm.doDisplay("none");
+    }
 
-      overlay.appendChild(overlayImg);
+    pm.addGlobalStyle(
+      "#overlay {" +
+      " display: " + pm.doDisplay() + ";" +
+      " position: absolute;" +
+      " top: 0;" +
+      " left: 0;" +
+      " width: 100%;" +
+      " z-index: 99;" +
+      " opacity: 0.5" +
+      "}" +
+      "#overlay img {" +
+      " display: block;" +
+      " margin: 0 auto;" +
+      "}"
+    );
 
-      if ( pm.doDisplay() == "" ) {
-        pm.doDisplay("none");
+    var keyEvent = "keypress";
+
+    // Add hotkeys
+    pm.addEvent(document, keyEvent, function (event) {
+
+      event = event || window.event;
+      var key = event.keyCode || event.which;
+
+      // Shift + Space to show / Hide overlay
+      if ( event.shiftKey && (key == 32) ) {
+        (pm.doDisplay() == "none") ? pm.doDisplay("block") : pm.doDisplay("none");
+
+        if (event.preventDefault) {
+          event.preventDefault();
+        }
+
+        event.returnValue = false;
+
+        return true;
       }
 
-      pm.addGlobalStyle(
-        "#overlay {" +
-        " display: " + pm.doDisplay() + ";" +
-        " position: absolute;" +
-        " top: 0;" +
-        " left: 0;" +
-        " width: 100%;" +
-        " z-index: 99;" +
-        " opacity: 0.5" +
-        "}" +
-        "#overlay img {" +
-        " display: block;" +
-        " margin: 0 auto;" +
-        "}"
-      );
+      // Ctrl + Enter - resize window to size of layout
+      if ( event.ctrlKey && (key == 13) ) {
+        pm.help.ge("overlay").style.opacity = "1";
+        (pm.doDisplay() == "none") ? pm.doDisplay("none") : pm.doDisplay("block");
+      }
 
-      var keyEvent = "keypress";
+    });
 
-      // Add hotkeys
-      pm.addEvent( document, keyEvent, function (event) {
-
-          event = event || window.event;
-          var key = event.keyCode || event.which;
-
-          // Shift + Space to show / Hide overlay
-          if ( event.shiftKey && (key == 32) ) {
-            ( pm.doDisplay() == "none" ) ? pm.doDisplay("block") : pm.doDisplay("none");
-
-            if ( event.preventDefault ) {
-              event.preventDefault();
-            }
-
-            event.returnValue = false;
-
-            return true;
-          }
-
-          // Ctrl + Enter - resize window to size of layout
-          if ( event.ctrlKey && (key == 13) ) {
-            pm.help.ge("overlay").style.opacity = "1";
-            ( pm.doDisplay() == "none" ) ? pm.doDisplay("none") : pm.doDisplay("block");
-          }
-
-      });
-
-      pm.setLayoutImage(img);
-    }
+    pm.setLayoutImage(img, overlayImg);
 
   },
 
@@ -83,13 +76,14 @@ var pm = {
     if (obj.addEventListener) {
       obj.addEventListener(event, handler, false);
     }
-    else if
-      ( obj.attachEvent( "on" + event, handler ) );
+    else {
+      obj.attachEvent("on" + event, handler);
+    }
   },
 
   addGlobalStyle: function(css) {
     var globalStyle = pm.help.ce("style");
-    pm.help.sa( globalStyle, "type", "text/css" );
+    pm.help.sa(globalStyle, "type", "text/css");
 
     var cssText = document.createTextNode(css);
     globalStyle.appendChild(cssText);
@@ -97,11 +91,10 @@ var pm = {
     document.getElementsByTagName("head")[0].appendChild(globalStyle);
   },
 
-  setLayoutImage: function(src) {
+  setLayoutImage: function(src, overlayImg) {
 
     var img = new Image();
     var overlayW, overlayH;
-    var overlayImg = pm.settings.overlayImg;
 
     pm.help.sa(overlayImg, "id", "overlay_img");
 
@@ -145,7 +138,7 @@ var pm = {
 
 };
 
-pm.initialize.go("_dev/layout.png");
+pm.initialize("_dev/layout.png");
 
 };
 
