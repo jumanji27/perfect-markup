@@ -46,7 +46,7 @@ var pm = {
       event = event || window.event;
       var key = event.keyCode || event.which;
 
-      // Shift + Space to show / Hide overlay
+      // Shift + Space to show / hide overlay
       if ( event.shiftKey && (key == 32) ) {
         (pm.doDisplay() == "none") ? pm.doDisplay("block") : pm.doDisplay("none");
 
@@ -59,7 +59,7 @@ var pm = {
         return true;
       }
 
-      // Ctrl + Enter - resize window to size of layout
+      // Ctrl + Enter – resize window to size of layout
       if ( event.ctrlKey && (key == 13) ) {
         pm.help.ge("overlay").style.opacity = "1";
         (pm.doDisplay() == "none") ? pm.doDisplay("none") : pm.doDisplay("block");
