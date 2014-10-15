@@ -1,11 +1,8 @@
 // perfectmarkup.js
 // Unknown refactoring script for pixel perfect html/css coding
 // https://github.com/nazz-nazz/perfect_markup
-
 window.onload = function() {
-
   var pm = {
-
     initialize: function(img) {
       var overlay = pm.help.ce("div");
       var overlayImg = pm.help.ce("img");
@@ -37,7 +34,7 @@ window.onload = function() {
         var key = event.keyCode || event.which;
 
         // Shift + Space to show / hide overlay
-        if ( event.shiftKey && (key == 32) ) {
+        if (event.shiftKey && (key == 32)) {
           (pm.doDisplay() == "none") ? pm.doDisplay("block") : pm.doDisplay("none");
 
           if (event.preventDefault) {
@@ -50,7 +47,7 @@ window.onload = function() {
         }
 
         // Ctrl + Enter – resize window to size of layout
-        if ( event.ctrlKey && (key == 13) ) {
+        if (event.ctrlKey && (key == 13)) {
           pm.help.ge("overlay").style.opacity = "1";
           (pm.doDisplay() == "none") ? pm.doDisplay("none") : pm.doDisplay("block");
         }
@@ -121,6 +118,5 @@ window.onload = function() {
   };
 
   pm.initialize("_dev/layout.png");
-
 };
 
