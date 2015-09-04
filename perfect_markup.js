@@ -1,6 +1,6 @@
 // perfectmarkup.js
 // Unknown refactoring script for pixel perfect html/css coding
-// https://github.com/nazz-nazz/perfect_markup
+// https://github.com/jumanji27/perfect_markup
 window.onload = function() {
   var pm = {
     initialize: function(img) {
